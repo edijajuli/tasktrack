@@ -1,18 +1,19 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import "./TaskCard.css";
 import Tag from "./Tag";
 import deleteIcon from "../assets/delete.png";
 
-const TaskCard = () => {
+const TaskCard = ({ title, tags, handleDelete, index }) => {
   return (
     <article className="task-card">
-      <p className="task-text">this is sample text</p>
+      <p className="task-text">{title}</p>
       <div className="task-card-bottom-line">
         <div className="task-card-tags">
-          <Tag tagName="HTML" />
-          <Tag tagName="CSS" />
+          {tags.map((tag, index) => (
+            <Tag key={index} tagName={tag} selected />
+          ))}
         </div>
-        <div className="task-delete">
+        <div className="task-delete" onClick={() => handleDelete(index)}>
           <img src={deleteIcon} alt="" className="delete-icon" />
         </div>
       </div>
