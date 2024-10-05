@@ -35,6 +35,11 @@ const TaskForm = ({ setTasks }) => {
 
   const handelSubmit = (e) => {
     e.preventDefault();
+    // Ensure the task input is not empty
+    if (taskData.task.trim() === "") {
+      alert("Task cannot be empty! Please enter a task.");
+      return;
+    }
     console.log(taskData);
     setTasks((prev) => {
       return [...prev, taskData];
